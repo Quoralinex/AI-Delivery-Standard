@@ -1,6 +1,6 @@
 ---
 name: ai-delivery-closeout
-description: Close out current or retrospective AI-delivered project work into a verified, machine-readable, reproducible delivery archive.
+description: Use when a user asks to finish, close out, archive, package, reconcile, retrospectively reconstruct, or prepare reproducible handover for AI-delivered project work.
 ---
 
 # AI Delivery Closeout
