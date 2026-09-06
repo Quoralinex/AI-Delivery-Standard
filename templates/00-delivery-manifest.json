@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0.0",
+  "standard": "AI-Delivery-Standard",
+  "standard_version": "1.0.0",
+  "delivery_id": "DCP-001",
+  "title": "Replace Me",
+  "status": "CLOSED",
+  "project_id": "replace-me",
+  "created_at": "1970-01-01T00:00:00Z",
+  "entrypoints": {
+    "human_manual": "01-delivery-manual.pdf",
+    "execution_spec": "02-rebuild-execution-spec.json",
+    "architecture_inventory": "03-architecture-inventory.json",
+    "deployment_inventory": "04-deployment-inventory.json",
+    "verification_evidence": "07-verification-evidence.json",
+    "rollback_recovery": "08-rollback-recovery.json",
+    "secret_requirements": "06-secret-requirements.json",
+    "sbom": "09-software-bill-of-materials.json",
+    "checksums": "10-checksums.sha256"
+  },
+  "source_coverage": {
+    "schema_version": "1.0.0",
+    "status": "INCOMPLETE",
+    "sources": [],
+    "known_missing_sources": [],
+    "notes": "Populate by discovering all accessible project sources; do not assume the active conversation is complete."
+  },
+  "supersedes": [],
+  "depends_on": []
+}

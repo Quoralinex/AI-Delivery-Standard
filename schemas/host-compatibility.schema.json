@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://quoralinex.github.io/AI-Delivery-Standard/schemas/host-compatibility.schema.json",
+  "title": "Host Compatibility",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "delivery_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "minimum_capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "known_hosts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "os": {
+            "type": "string",
+            "minLength": 1
+          },
+          "architecture": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "VERIFIED",
+              "SUPPORTED_UNVERIFIED",
+              "UNSUPPORTED"
+            ]
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "os",
+          "architecture",
+          "status"
+        ]
+      }
+    },
+    "discovery_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "component": {
+            "type": "string",
+            "minLength": 1
+          },
+          "commands": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "minimum_version": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "component",
+          "commands"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "delivery_id",
+    "minimum_capabilities",
+    "known_hosts",
+    "discovery_rules"
+  ]
+}

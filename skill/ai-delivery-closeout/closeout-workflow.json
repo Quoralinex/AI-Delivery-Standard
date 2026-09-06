@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "mode": "CURRENT_DELIVERY",
+  "policy": "FAIL_CLOSED",
+  "ordered_steps": [
+    "resolve_project",
+    "load_indexes",
+    "discover_sources",
+    "inventory_deliverables",
+    "capture_delivery_state",
+    "generate_package",
+    "validate_schemas",
+    "generate_checksums",
+    "verify_archive",
+    "update_project_index",
+    "update_catalog",
+    "report"
+  ]
+}

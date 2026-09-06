@@ -1,0 +1,9 @@
+{
+  "name": "ai-delivery-standard",
+  "version": "1.0.0",
+  "private": false,
+  "type": "module",
+  "engines": {"node": ">=20"},
+  "scripts": {"test": "node --test tests/*.test.mjs", "validate": "node validators/validate-repository.mjs", "check": "npm run validate && npm test"},
+  "dependencies": {"ajv": "^8.17.1", "ajv-formats": "^3.0.1"}
+}
