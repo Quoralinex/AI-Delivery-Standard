@@ -6,6 +6,7 @@ test("public closeout skill contains mandatory fail-closed retrospective rules",
   const path = "skill/ai-delivery-closeout/SKILL.md";
   assert.equal(existsSync(path), true);
   const text = readFileSync(path, "utf8");
+  assert.match(text, /^---\nname: ai-delivery-closeout\ndescription: Use when /);
   for (const token of ["RETROSPECTIVE_PROJECT", "current conversation", "source coverage", "FAIL_CLOSED", "project-delivery-index.json", "checksum"]) assert.match(text, new RegExp(token, "i"));
 });
 
