@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://quoralinex.github.io/AI-Delivery-Standard/schemas/project-catalog.schema.json",
+  "title": "Project Catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "standard": {
+      "const": "AI-Delivery-Standard"
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "index": {
+            "type": "string",
+            "minLength": 1
+          },
+          "delivery_count": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "project_id",
+          "name",
+          "index",
+          "delivery_count"
+        ]
+      }
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "schema_version",
+    "standard",
+    "projects",
+    "updated_at"
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://quoralinex.github.io/AI-Delivery-Standard/schemas/rebuild-execution-spec.schema.json",
+  "title": "Rebuild Execution Spec",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "delivery_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "completion_policy": {
+      "const": "FAIL_CLOSED"
+    },
+    "supported_operations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "VERIFY_CURRENT_INSTALLATION",
+          "INSTALL_ON_NEW_HOST",
+          "REBUILD_FROM_ZERO",
+          "DISASTER_RECOVERY"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "parameters": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "string",
+          "number",
+          "boolean",
+          "object",
+          "array",
+          "null"
+        ]
+      }
+    },
+    "secret_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "name",
+          "required",
+          "source"
+        ]
+      }
+    },
+    "stages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "preconditions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "actions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "command": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "expected_exit_code": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "type",
+                "description"
+              ]
+            }
+          },
+          "verification": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "description": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "expected": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "object",
+                    "array",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "type",
+                "description"
+              ]
+            }
+          },
+          "rollback": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "preconditions",
+          "actions",
+          "verification",
+          "rollback"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "delivery_id",
+    "completion_policy",
+    "supported_operations",
+    "parameters",
+    "secret_refs",
+    "stages"
+  ]
+}

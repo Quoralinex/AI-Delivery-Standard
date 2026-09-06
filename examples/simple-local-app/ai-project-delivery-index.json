@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "standard": "AI-Delivery-Standard",
+  "standard_version": "1.0.0",
+  "project": {
+    "id": "hello-cli",
+    "name": "Hello CLI"
+  },
+  "status": "CLOSED",
+  "deliveries": [
+    {
+      "id": "DCP-001",
+      "title": "Hello CLI v1",
+      "status": "CLOSED",
+      "manifest": "AI Delivery Closeout Packages/DCP-001 - Hello CLI v1/00-delivery-manifest.json",
+      "supersedes": [],
+      "depends_on": []
+    }
+  ],
+  "unpackaged_deliveries": [],
+  "source_coverage": {
+    "schema_version": "1.0.0",
+    "status": "COMPLETE",
+    "sources": [
+      {
+        "type": "REPOSITORY",
+        "identifier": "example/hello-cli",
+        "role": "SOURCE"
+      }
+    ],
+    "known_missing_sources": [],
+    "notes": "Example only"
+  },
+  "updated_at": "2026-09-06T00:00:00Z"
+}

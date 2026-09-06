@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://quoralinex.github.io/AI-Delivery-Standard/schemas/delivery-package.schema.json",
+  "title": "Delivery Package",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "delivery_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "const": "CLOSED"
+    },
+    "secret_requirements": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "not": {
+          "required": [
+            "value"
+          ]
+        }
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "acceptance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": "PASS"
+        }
+      },
+      "required": [
+        "status"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "delivery_id",
+    "title",
+    "status",
+    "secret_requirements",
+    "artifacts",
+    "acceptance"
+  ]
+}

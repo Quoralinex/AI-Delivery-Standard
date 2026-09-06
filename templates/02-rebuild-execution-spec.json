@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "delivery_id": "DCP-001",
+  "completion_policy": "FAIL_CLOSED",
+  "supported_operations": [
+    "VERIFY_CURRENT_INSTALLATION",
+    "INSTALL_ON_NEW_HOST",
+    "REBUILD_FROM_ZERO",
+    "DISASTER_RECOVERY"
+  ],
+  "parameters": {
+    "PROJECT_ROOT": "${PROJECT_ROOT}",
+    "ARCHIVE_ROOT": "${ARCHIVE_ROOT}"
+  },
+  "secret_refs": [],
+  "stages": [
+    {
+      "id": "01-discover-host",
+      "name": "Discover host capabilities",
+      "preconditions": [],
+      "actions": [
+        {
+          "type": "DISCOVER",
+          "description": "Detect OS, architecture and available filesystem/command/git capabilities."
+        }
+      ],
+      "verification": [
+        {
+          "type": "ASSERT",
+          "description": "Required capabilities are present.",
+          "expected": true
+        }
+      ],
+      "rollback": []
+    }
+  ]
+}

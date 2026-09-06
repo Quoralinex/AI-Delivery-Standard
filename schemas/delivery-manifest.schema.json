@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://quoralinex.github.io/AI-Delivery-Standard/schemas/delivery-manifest.schema.json",
+  "title": "Delivery Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "standard": {
+      "const": "AI-Delivery-Standard"
+    },
+    "standard_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "delivery_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "CLOSED",
+        "SUPERSEDED"
+      ]
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "entrypoints": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "human_manual": {
+          "type": "string",
+          "minLength": 1
+        },
+        "execution_spec": {
+          "type": "string",
+          "minLength": 1
+        },
+        "architecture_inventory": {
+          "type": "string",
+          "minLength": 1
+        },
+        "deployment_inventory": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verification_evidence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rollback_recovery": {
+          "type": "string",
+          "minLength": 1
+        },
+        "secret_requirements": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sbom": {
+          "type": "string",
+          "minLength": 1
+        },
+        "checksums": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "execution_spec",
+        "architecture_inventory",
+        "deployment_inventory",
+        "verification_evidence",
+        "rollback_recovery",
+        "secret_requirements",
+        "sbom",
+        "checksums"
+      ]
+    },
+    "source_coverage": {
+      "$ref": "https://quoralinex.github.io/AI-Delivery-Standard/schemas/source-coverage.schema.json"
+    },
+    "supersedes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "depends_on": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "standard",
+    "standard_version",
+    "delivery_id",
+    "title",
+    "status",
+    "project_id",
+    "created_at",
+    "entrypoints",
+    "source_coverage",
+    "supersedes",
+    "depends_on"
+  ]
+}
